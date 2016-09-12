@@ -30,7 +30,7 @@ if [ ! -d "${NGINX_VERSION_DIR}" ]; then
 fi
 
 # Create dirs
-dirs=( "logs" "run" )
+dirs=( "logs" "run" "geoip")
 for dir in ${dirs[@]}; do
     mkdir -p "${OPENSHIFT_NGINX_DIR}/${dir}"
 done
@@ -40,3 +40,10 @@ export OPENSHIFT_NGINX_VERSION=${NGINX_VERSION}
 
 echo "${NGINX_VERSION}" > ${OPENSHIFT_NGINX_DIR}/env/OPENSHIFT_NGINX_VERSION
 echo "${NGINX_VERSION_DIR}" > ${OPENSHIFT_NGINX_DIR}/env/OPENSHIFT_NGINX_VERSION_DIR
+
+# Get GeoIP databases
+cd "${OPENSHIFT_NGINX_DIR}/geoip"
+wget -N http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
+gunzip GeoLiteCity.dat.gz
+wget -N http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
+gunzip GeoIP.dat.gz
