@@ -55,4 +55,8 @@ http {
     keepalive_timeout 65;
 
     include  <%= ENV['OPENSHIFT_NGINX_DIR'] %>/conf/nginx_http.conf;
+
+    # GeoIP configuration
+    geoip_country  <%= ENV['OPENSHIFT_NGINX_DIR'] %>/geoip/CountryGeoIP.dat
+    geoip_city     <%= ENV['OPENSHIFT_NGINX_DIR'] %>/geoip/GeoIPOrLiteCity.dat;
 }
