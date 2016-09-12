@@ -6,7 +6,7 @@ source "${OPENSHIFT_NGINX_DIR}/bin/setup_util.sh"
 # Archive/LFS configuration
 declare -a ARCHIVE_SERVERS
 ARCHIVE_SERVERS=( "http://download-bcartridges.rhcloud.com/nginx" )
-LFS_ENDPOINT=https://github.com/boekkooi/openshift-cartridge-nginx.git/info/lfs
+LFS_ENDPOINT=https://github.com/alesn/openshift-cartridge-nginx.git/info/lfs
 
 # Resolve version
 case "$1" in
@@ -14,7 +14,7 @@ case "$1" in
     version="$2"
 esac
 
-NGINX_VERSION=1.11.1
+NGINX_VERSION=1.11.3-with-http_geoip_module
 if [ ! -z "${OPENSHIFT_NGINX_VERSION}" ] && [ -f "${OPENSHIFT_NGINX_DIR}/usr/nginx-${OPENSHIFT_NGINX_VERSION}.tar.gz" ]; then
     NGINX_VERSION="${OPENSHIFT_NGINX_VERSION}"
 elif [ -f "${OPENSHIFT_NGINX_DIR}/usr/nginx-${version}.tar.gz" ]; then
