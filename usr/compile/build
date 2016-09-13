@@ -50,6 +50,7 @@ pushd nginx-${NGINX_VERSION}
     --with-http_realip_module \
     --with-http_gzip_static_module \
     --with-ipv6 \
+    --with-http_geoip_module \
     --prefix=${TARGET_DIR}
 
 # Compiling nginx
